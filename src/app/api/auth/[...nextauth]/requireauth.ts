@@ -3,19 +3,19 @@ import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { Adapter } from "next-auth/adapters";
 import prisma from "../../../../../prisma/prisma";
-import Stripe from "stripe";  
+import Stripe from "stripe";
 
-export const authOptions:NextAuthOptions = {  
-  adapter: PrismaAdapter(prisma) as Adapter,  
+export const authOptions:NextAuthOptions = {
+  adapter: PrismaAdapter(prisma) as Adapter,
   providers: [
-    GoogleProvider({  
+    GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,  
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
-  ],  
+  ],
   secret: process.env.NEXTAUTH_SECRET,
   callbacks:{
-    async session({ session, user }) {  
+    async session({ session, user }) {
       session!.user!.id = user.id;
       session!.user!.stripeCustomerId = user.stripeCustomerId;
       session!.user!.isActive = user.isActive;
