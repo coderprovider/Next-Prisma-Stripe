@@ -6,7 +6,7 @@ export default async function Home() {
       <div className="mb-5 font-bold text-xl">
         Next.js 13.4 (/app), Prisma, Next-Auth with Stripe Subscriptions
       </div>
-      <div className="border-4 w-full max-w-xs min-h-[25rem] flex justify-center items-center" >
+      <div className="border-4 w-full max-w-xs min-h-[25rem] flex justify-center items-center">
         <LoginBtn />
       </div>
     </main>
